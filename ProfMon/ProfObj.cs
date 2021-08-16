@@ -1,5 +1,4 @@
 ﻿using ProfMon.Framework;
-using ProfMon.Framework.ID;
 
 namespace ProfMon {
     public class ProfObj : IProfObj {

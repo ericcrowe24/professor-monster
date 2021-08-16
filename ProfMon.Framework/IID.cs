@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace ProfMon.Framework.ID {
+namespace ProfMon.Framework {
     public interface IID {
         Part Major { get; }
-
         Part Minor { get; }
 
         bool Equals (object obj);
@@ -23,7 +22,15 @@ namespace ProfMon.Framework.ID {
                 _value = value;
             }
 
-            public static implicit operator Part (byte[] value) => new Part(value);
+            public static implicit operator Part (byte[] value) => PartFromByteArray(value);
+
+            private static Part PartFromByteArray (byte[] value) {
+                if (value.Length > 4) {
+                    throw new Exception("ID parts must be less than or equal to 4 bytes in length");
+                }
+
+                return new Part(value);
+            }
 
             public static implicit operator Part (int value) => new Part(BitConverter.GetBytes(value));
 

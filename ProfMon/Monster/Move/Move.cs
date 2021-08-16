@@ -1,61 +1,95 @@
-﻿using ProfMon.Framework.Descriptors;
-using ProfMon.Framework.ID;
+﻿using ProfMon.Framework;
+using ProfMon.Framework.Monster;
+using ProfMon.Framework.Monster.Move;
+using static ProfMon.Framework.Monster.Move.IMove;
 
 namespace ProfMon.Monster.Move {
-    public class Move : ProfObj, IName, IDescription {
-        public string Name { get; }
+    public class Move : AbstractMove {
+        public override string Name => _name;
+        public override string Description => _description;
 
-        public string Description { get; }
+        public override IElement PrimaryElement => _primaryElement;
+        public override IElement SecondaryElement => _secondaryElement;
 
-        public Element Element { get; }
+        public override float Power => _power;
+        public override float Accurecy => _accurecy;
 
-        public float Power { get; }
+        public override int StartingUses => _startingUses;
+        public override int MaxUses => _maxUses;
 
-        public float Accurecy { get; }
-
-        public int StartingUses { get; }
-
-        public int MaxUses { get; }
-
-        public float CriticalHitRate { get; }
-
-        public float CriticalHitMultiplier { get; }
+        public override float CriticalHitRate => _criticalHitRate;
+        public override float CriticalHitMultiplier => _criticalHitMultiplier;
 
         private Move () : base(null) { }
 
-        protected Move (MoveConfig config) : base(config.ID) {
-            Name = config.Name;
-            Description = config.Description;
-            Element = config.Element;
-            Power = config.Power;
-            Accurecy = config.Accurecy;
-            StartingUses = config.StartingUses;
-            MaxUses = config.MaxUses;
-            CriticalHitRate = config.CriticalHitRate;
-            CriticalHitMultiplier = config.CriticalHitMultiplier;
-        }
+        protected Move (Config config) : base(config) { }
 
-        protected class MoveConfig {
-            public IID ID { get; set; }
+        public class Builder : AbstractMoveBuilder {
+            private Config _config;
 
-            public string Name { get; }
+            public Builder () {
+                _config = new Config();
+            }
 
-            public string Description { get; }
+            public override IBuilder<IMove> WithID (IID id) {
+                _config.ID = id;
+                return this;
+            }
 
-            public Element Element { get; }
+            public override IMoveBuilder WithName (string name) {
+                _config.Name = name;
+                return this;
+            }
 
-            public float Power { get; }
+            public override IMoveBuilder WithDescription (string description) {
+                _config.Description = description;
+                return this;
+            }
 
-            public float Accurecy { get; }
+            public override IMoveBuilder WithPrimaryElement (IElement element) {
+                _config.PrimaryElement = element;
+                return this;
 
-            public int StartingUses { get; }
+            }
 
-            public int MaxUses { get; }
+            public override IMoveBuilder WithSecondaryElement (IElement element) {
+                _config.SecondaryElement = element;
+                return this;
+            }
 
-            public float CriticalHitRate { get; }
+            public override IMoveBuilder WithPower (float power) {
+                _config.Power = power;
+                return this;
+            }
 
-            public float CriticalHitMultiplier { get; }
+            public override IMoveBuilder WithAccurecy (float accurecy) {
+                _config.Accurecy = accurecy;
+                return this;
+            }
 
+            public override IMoveBuilder WithStartingUses (int uses) {
+                _config.StartingUses = uses;
+                return this;
+            }
+
+            public override IMoveBuilder WithMaxUses (int uses) {
+                _config.MaxUses = uses;
+                return this;
+            }
+
+            public override IMoveBuilder WithCriticalHitRate (float rate) {
+                _config.CriticalHitRate = rate;
+                return this;
+            }
+
+            public override IMoveBuilder WithCriticalHitMulitplier (float multi) {
+                _config.CriticalHitMultiplier = multi;
+                return this;
+            }
+
+            public override IMove Build () {
+                return new Move(_config);
+            }
         }
     }
 }

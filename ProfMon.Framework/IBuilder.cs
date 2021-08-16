@@ -1,6 +1,4 @@
-﻿using ProfMon.Framework.ID;
-
-namespace ProfMon.Framework {
+﻿namespace ProfMon.Framework {
     public interface IBuilder<T> {
         IBuilder<T> WithID (IID id);
 

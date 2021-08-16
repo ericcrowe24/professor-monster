@@ -1,4 +1,4 @@
-﻿using ProfMon.Framework.ID;
+﻿using ProfMon.Framework;
 using System;
 
 namespace ProfMon {
@@ -17,10 +17,10 @@ namespace ProfMon {
                   BitConverter.GetBytes(minor)) { }
 
         public override bool Equals (object obj) {
-            if(!(obj is IID)) {
+            if (!(obj is IID)) {
                 return false;
             }
-            
+
             var other = obj as IID;
 
             return other.ToByteArray() == ToByteArray();

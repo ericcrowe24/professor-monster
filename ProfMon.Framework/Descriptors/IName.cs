@@ -1,5 +1,5 @@
 ﻿namespace ProfMon.Framework.Descriptors {
-    public interface IName { 
+    public interface IName {
         string Name { get; }
     }
 }

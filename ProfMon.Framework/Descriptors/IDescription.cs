@@ -1,5 +1,5 @@
 ﻿namespace ProfMon.Framework.Descriptors {
-    public interface IDescription { 
+    public interface IDescription {
         string Description { get; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ProfMon.Framework;
-using ProfMon.Framework.ID;
 using ProfMon.Framework.Monster;
+using ProfMon.Framework.Monster.Move;
+using static ProfMon.Framework.Monster.ISpecies;
 
 namespace ProfMon.Monster {
     public partial class Species : AbstractSpecies {
@@ -19,98 +20,98 @@ namespace ProfMon.Monster {
         public override Stat GrowthStat => _growthStat;
         public override IGrowthRate GrowthRate => _growthRate;
 
-        public override IElement PrimaryElement => _primaryElement;
-        public override IElement SecondaryElement => _secondaryElement;
+        public override Framework.Monster.IElement PrimaryElement => _primaryElement;
+        public override Framework.Monster.IElement SecondaryElement => _secondaryElement;
 
-        public override IAbility[] Abilities => _abilities;
+        public override ITrait[] Traits => _traits;
 
         private Species () : base(null) { }
 
         protected Species (Config config) : base(config) { }
 
-        public class Builder : IBuilder<Species> {
+        public class Builder : AbstractSpeciesBuilder {
             private Config _config;
 
             public Builder () {
                 _config = new Config();
             }
 
-            public IBuilder<Species> WithID (IID id) {
+            public override IBuilder<ISpecies> WithID (IID id) {
                 _config.ID = id;
                 return this;
             }
 
-            public IBuilder<Species> WithName (string name) {
+            public override ISpeciesBuilder WithName (string name) {
                 _config.Name = name;
                 return this;
             }
 
-            public IBuilder<Species> WithDescription (string description) {
+            public override ISpeciesBuilder WithDescription (string description) {
                 _config.Description = description;
                 return this;
             }
 
-            public IBuilder<Species> WithHealth (float health) {
+            public override ISpeciesBuilder WithHealth (float health) {
                 _config.Health = health;
                 return this;
             }
 
-            public IBuilder<Species> WithPhysicalAttack (float attack) {
+            public override ISpeciesBuilder WithPhysicalAttack (float attack) {
                 _config.PhysicalAttack = attack;
                 return this;
             }
 
-            public IBuilder<Species> WithPhysicalDefense (float defense) {
+            public override ISpeciesBuilder WithPhysicalDefense (float defense) {
                 _config.PhysicalDefense = defense;
                 return this;
             }
 
-            public IBuilder<Species> WithNonphysicalAttack (float attack) {
+            public override ISpeciesBuilder WithNonphysicalAttack (float attack) {
                 _config.NonphysicalAttack = attack;
                 return this;
             }
 
-            public IBuilder<Species> WithNonphysicalDefense (float defense) {
+            public override ISpeciesBuilder WithNonphysicalDefense (float defense) {
                 _config.NonphysicalDefense = defense;
                 return this;
             }
 
-            public IBuilder<Species> WithSpeed (float speed) {
+            public override ISpeciesBuilder WithSpeed (float speed) {
                 _config.Speed = speed;
                 return this;
             }
 
-            public IBuilder<Species> WithMovePool (IMovePool pool) {
+            public override ISpeciesBuilder WithMovePool (IMovePool pool) {
                 _config.Moves = pool;
                 return this;
             }
 
-            public IBuilder<Species> WithGrowthStat (Stat stat) {
+            public override ISpeciesBuilder WithGrowthStat (Stat stat) {
                 _config.GrowthStat = stat;
                 return this;
             }
 
-            public IBuilder<Species> WithGrowthRate (IGrowthRate growthRate) {
+            public override ISpeciesBuilder WithGrowthRate (IGrowthRate growthRate) {
                 _config.GrowthRate = growthRate;
                 return this;
             }
 
-            public IBuilder<Species> WithPrimaryElement (IElement element) {
+            public override ISpeciesBuilder WithPrimaryElement (Framework.Monster.IElement element) {
                 _config.PrimaryElement = element;
                 return this;
             }
 
-            public IBuilder<Species> WithSecondaryElement (IElement element) {
+            public override ISpeciesBuilder WithSecondaryElement (Framework.Monster.IElement element) {
                 _config.SecondaryElement = element;
                 return this;
             }
 
-            public IBuilder<Species> WithAbilities (IAbility[] abilities) {
-                _config.Abilities = abilities;
+            public override ISpeciesBuilder WithTraits (ITrait[] traits) {
+                _config.Traits = traits;
                 return this;
             }
 
-            public Species Build () {
+            public override ISpecies Build () {
                 return new Species(_config);
             }
         }

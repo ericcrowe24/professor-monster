@@ -1,6 +1,4 @@
-﻿using ProfMon.Framework.ID;
-
-namespace ProfMon.Framework {
+﻿namespace ProfMon.Framework {
     public interface IProfObj {
         IID ID { get; }
 

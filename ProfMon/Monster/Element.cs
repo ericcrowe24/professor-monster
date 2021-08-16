@@ -1,73 +1,55 @@
-﻿using ProfMon.Framework.Descriptors;
-using ProfMon.Framework.ID;
+﻿using ProfMon.Framework;
+using ProfMon.Framework.Monster;
 using System.Collections.Generic;
+using static ProfMon.Framework.Monster.IElement;
 
 namespace ProfMon.Monster {
-    public class Element : ProfObj, IName, IDescription {
-        public string Name { get; }
+    public class Element : AbstractElement {
+        public override string Name => _name;
+        public override string Description => _description;
 
-        public string Description { get; }
-
-        public Dictionary<Element, int> Strengths { get; }
-
-        public Dictionary<Element, int> Weaknesses { get; }
+        public override Dictionary<IElement, int> Strengthes => _strengthes;
+        public override Dictionary<IElement, int> Weaknesses => _weaknesses;
 
         private Element () : base(null) { }
 
-        private Element (Config config) : base(config.ID) {
-            Name = config.Name;
-            Description = config.Description;
-            Strengths = config.Strengths;
-            Weaknesses = config.Weaknesses;
-        }
+        protected Element (Config config) : base(config) { }
 
-        public class Builder {
+        public class Builder : AbstractElementBuilder {
             private Config config;
 
             public Builder () {
                 config = new Config();
             }
 
-            public Builder WithID (IID id) {
+            public override IBuilder<IElement> WithID (IID id) {
                 config.ID = id;
                 return this;
             }
 
-            public Builder WithName (string name) {
+            public override IElementBuilder WithName (string name) {
                 config.Name = name;
                 return this;
             }
 
-            public Builder WithDescription (string description) {
+            public override IElementBuilder WithDescription (string description) {
                 config.Description = description;
                 return this;
             }
 
-            public Builder WithWeaknesses (Dictionary<Element, int> weaknesses) {
+            public override IElementBuilder WithWeaknesses (Dictionary<IElement, int> weaknesses) {
                 config.Weaknesses = weaknesses;
                 return this;
             }
 
-            public Builder WithStrengths (Dictionary<Element, int> strengths) {
-                config.Strengths = strengths;
+            public override IElementBuilder WithStrengths (Dictionary<IElement, int> strengthes) {
+                config.Strengthes = strengthes;
                 return this;
             }
 
-            public Element Build () {
+            public override IElement Build () {
                 return new Element(config);
             }
-        }
-
-        private class Config {
-            public IID ID { get; set; }
-
-            public string Name { get; set; }
-
-            public string Description { get; set; }
-
-            public Dictionary<Element, int> Strengths = new Dictionary<Element, int>();
-
-            public Dictionary<Element, int> Weaknesses = new Dictionary<Element, int>();
         }
     }
 }
