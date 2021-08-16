@@ -3,16 +3,16 @@ using ProfMon.Framework.ID;
 using ProfMon.Framework.Monster;
 
 namespace ProfMon.Monster {
-    public class Ability : ProfObj, IName, IDescription, IAbility {
+    public class Trait : ProfObj, IName, IDescription, IAbility {
         public string Name { get; }
 
         public string Description { get; }
 
-        private Ability () : base(null) { }
+        private Trait () : base(null) { }
 
-        protected Ability (AbilityConfig config) : base(config.ID) { }
+        protected Trait (Config config) : base(config.ID) { }
 
-        protected class AbilityConfig {
+        protected class Config {
             public IID ID { get; set; }
         }
     }
