@@ -20,8 +20,8 @@ namespace ProfMon.Monster {
         public override Stat GrowthStat => _growthStat;
         public override IGrowthRate GrowthRate => _growthRate;
 
-        public override Framework.Monster.IElement PrimaryElement => _primaryElement;
-        public override Framework.Monster.IElement SecondaryElement => _secondaryElement;
+        public override IElement PrimaryElement => _primaryElement;
+        public override IElement SecondaryElement => _secondaryElement;
 
         public override ITrait[] Traits => _traits;
 

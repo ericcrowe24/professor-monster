@@ -81,9 +81,9 @@ namespace ProfMon.Item {
             public abstract IItemBuilder WithHealthRestored (float resotred);
             public abstract IItemBuilder WithStatusRemoved (IStatus status);
 
-            public abstract bool CanFullHeal (bool option);
-            public abstract bool RemovesAnyStatus (bool option);
-            public abstract bool RemovesAllStatus (bool option);
+            public abstract IItemBuilder CanFullHeal (bool option);
+            public abstract IItemBuilder RemovesAnyStatus (bool option);
+            public abstract IItemBuilder RemovesAllStatus (bool option);
 
             public abstract IItem Build ();
         }

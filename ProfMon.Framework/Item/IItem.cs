@@ -25,9 +25,9 @@ namespace ProfMon.Framework.Item {
             IItemBuilder WithHealthRestored (float resotred);
             IItemBuilder WithStatusRemoved (IStatus status);
 
-            bool CanFullHeal (bool option);
-            bool RemovesAnyStatus (bool option);
-            bool RemovesAllStatus (bool option);
+            IItemBuilder CanFullHeal (bool option);
+            IItemBuilder RemovesAnyStatus (bool option);
+            IItemBuilder RemovesAllStatus (bool option);
 
         }
     }
