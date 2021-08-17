@@ -20,7 +20,7 @@ namespace ProfMon.World {
 
         public abstract Dictionary<IElement, float> ElementModifiers { get; }
 
-        private AbstractWeather () : base (null) { }
+        private AbstractWeather () : base(null) { }
 
         protected AbstractWeather (Config config) : base(config.ID) {
             _name = config.Name;

@@ -24,8 +24,8 @@ namespace ProfMon.Monster {
 
         public class Builder : AbstractStatusBuilder {
             private Config _config;
-            
-            public Builder() {
+
+            public Builder () {
                 _config = new Config();
             }
 

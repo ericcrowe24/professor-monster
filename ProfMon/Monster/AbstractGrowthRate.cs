@@ -3,9 +3,9 @@ using ProfMon.Framework.Monster;
 
 namespace ProfMon.Monster {
     public abstract class AbstractGrowthRate : ProfObj, IGrowthRate {
-        protected AbstractGrowthRate () : base(null) { }
+        private AbstractGrowthRate () : base(null) { }
 
-        public AbstractGrowthRate (IID id) : base(id) { }
+        protected AbstractGrowthRate (IID id) : base(id) { }
 
         public abstract float CalculateExpRequirment (float level);
     }

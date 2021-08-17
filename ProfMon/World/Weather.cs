@@ -16,12 +16,12 @@ namespace ProfMon.World {
 
         private Weather () : base(null) { }
 
-        protected Weather(Config config) : base(config) { }
+        protected Weather (Config config) : base(config) { }
 
         public class Builder : AbstractWeatherBuilder {
             private Config _config;
 
-            public Builder() {
+            public Builder () {
                 _config = new Config();
             }
 
