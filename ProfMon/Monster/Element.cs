@@ -22,7 +22,7 @@ namespace ProfMon.Monster {
                 config = new Config();
             }
 
-            public override IBuilder<IElement> WithID (IID id) {
+            public override IElementBuilder WithID (IID id) {
                 config.ID = id;
                 return this;
             }

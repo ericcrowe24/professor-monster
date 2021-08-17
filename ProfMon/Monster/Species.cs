@@ -36,7 +36,7 @@ namespace ProfMon.Monster {
                 _config = new Config();
             }
 
-            public override IBuilder<ISpecies> WithID (IID id) {
+            public override ISpeciesBuilder WithID (IID id) {
                 _config.ID = id;
                 return this;
             }

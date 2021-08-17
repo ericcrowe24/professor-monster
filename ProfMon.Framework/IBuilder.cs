@@ -1,6 +1,6 @@
 ﻿namespace ProfMon.Framework {
-    public interface IBuilder<T> {
-        IBuilder<T> WithID (IID id);
+    public interface IBuilder<T, TBuilderType> {
+        TBuilderType WithID (IID id);
 
         T Build ();
     }

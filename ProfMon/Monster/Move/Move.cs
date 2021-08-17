@@ -31,7 +31,7 @@ namespace ProfMon.Monster.Move {
                 _config = new Config();
             }
 
-            public override IBuilder<IMove> WithID (IID id) {
+            public override IMoveBuilder WithID (IID id) {
                 _config.ID = id;
                 return this;
             }

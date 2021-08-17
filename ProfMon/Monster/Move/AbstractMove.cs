@@ -74,8 +74,8 @@ namespace ProfMon.Monster.Move {
             public float CriticalHitMultiplier { get; set; }
         }
 
-        public abstract class AbstractMoveBuilder : IBuilder<IMove>, IMoveBuilder {
-            public abstract IBuilder<IMove> WithID (IID id);
+        public abstract class AbstractMoveBuilder : IMoveBuilder {
+            public abstract IMoveBuilder WithID (IID id);
             public abstract IMoveBuilder WithName (string name);
             public abstract IMoveBuilder WithDescription (string description);
 

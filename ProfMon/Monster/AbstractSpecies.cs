@@ -84,8 +84,8 @@ namespace ProfMon.Monster {
             public ITrait[] Traits { get; set; }
         }
 
-        public abstract class AbstractSpeciesBuilder : IBuilder<ISpecies>, ISpeciesBuilder {
-            public abstract IBuilder<ISpecies> WithID (IID id);
+        public abstract class AbstractSpeciesBuilder : ISpeciesBuilder {
+            public abstract ISpeciesBuilder WithID (IID id);
             public abstract ISpeciesBuilder WithName (string name);
             public abstract ISpeciesBuilder WithDescription (string description);
 

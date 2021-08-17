@@ -39,15 +39,16 @@ namespace ProfMon.Monster {
             public Dictionary<IElement, int> Weaknesses = new Dictionary<IElement, int>();
         }
 
-        public abstract class AbstractElementBuilder : IBuilder<IElement>, IElementBuilder {
-            public abstract IElement Build ();
+        public abstract class AbstractElementBuilder : IElementBuilder {
+            public abstract IElementBuilder WithID (IID id);
+
             public abstract IElementBuilder WithName (string name);
             public abstract IElementBuilder WithDescription (string description);
 
             public abstract IElementBuilder WithStrengths (Dictionary<IElement, int> strengthes);
             public abstract IElementBuilder WithWeaknesses (Dictionary<IElement, int> weaknesses);
 
-            public abstract IBuilder<IElement> WithID (IID id);
+            public abstract IElement Build ();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ProfMon.Framework.Monster {
         public Dictionary<IElement, int> Strengthes { get; }
         public Dictionary<IElement, int> Weaknesses { get; }
 
-        public interface IElementBuilder : IBuilder<IElement> {
+        public interface IElementBuilder : IBuilder<IElement, IElementBuilder> {
             IElementBuilder WithName (string name);
             IElementBuilder WithDescription (string description);
 

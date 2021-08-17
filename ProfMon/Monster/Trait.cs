@@ -14,7 +14,7 @@ namespace ProfMon.Monster {
         public class Builder : AbstractTraitBuilder {
             private Config _config = new Config();
 
-            public override IBuilder<ITrait> WithID (IID id) {
+            public override ITraitBuilder WithID (IID id) {
                 _config.ID = id;
                 return this;
             }

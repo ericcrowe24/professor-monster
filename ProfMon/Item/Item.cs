@@ -1,31 +1,23 @@
-
+﻿using ProfMon.Framework.Monster;
 
 namespace ProfMon.Item {
-	public class Item : ProfObj, IName, IDescription {
-		public string Name { get; }
-		public string Description { get; }
+    public class Item : AbstractItem {
+        public override string Name => _name;
+        public override string Description => _description;
 
-		public float BuyValue {get;}
-		public bool Sellable {get;}
-		public float SellValue {get;}
+        public override float BuyValue => _buyValue;
+        public override bool Sellable => _sellable;
+        public override float SellValue => _sellValue;
 
-		public float HealthRestored {get;}
-		public Status StatusRemoved {get;}
+        public override float HealthRestored => _healthRestored;
+        public override IStatus StatusRemoved => _statusRemoved;
 
-		public bool FullRestore {get;}
-		public bool FullHeal {get;}
+        public override bool FullHeal => _fullHeal;
+        public override bool RemovesAllStatus => _removesAllStatus;
+        public override bool RemovesAnyStatus => _removesAnyStatus;
 
-		private Item () : base(null){}
+        private Item () : base(null) { }
 
-		public Item (Config config) : base(config.ID) {}
-
-		private class Config {
-			public IID ID {get; set;}
-			public string Name {get; set;}
-			public string Description {get; set;}
-
-			public float BuyValue {get;set;}
-			
-		}
-	}
+        protected Item (Config config) : base(config) { }
+    }
 }

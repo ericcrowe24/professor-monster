@@ -13,8 +13,7 @@
         float CriticalHitMultiplier { get; }
         float CriticalHitRate { get; }
 
-        public interface IMoveBuilder {
-            IBuilder<IMove> WithID (IID id);
+        public interface IMoveBuilder : IBuilder<IMove, IMoveBuilder> {
             IMoveBuilder WithName (string name);
             IMoveBuilder WithDescription (string description);
 
@@ -29,7 +28,6 @@
 
             IMoveBuilder WithCriticalHitRate (float rate);
             IMoveBuilder WithCriticalHitMulitplier (float multi);
-            IMove Build ();
         }
     }
 }

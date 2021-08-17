@@ -3,13 +3,9 @@
         string Description { get; }
         string Name { get; }
 
-        public interface ITraitBuilder {
-            IBuilder<ITrait> WithID (IID id);
-
+        public interface ITraitBuilder : IBuilder<ITrait, ITraitBuilder> {
             ITraitBuilder WithName (string name);
             ITraitBuilder WithDescription (string description);
-
-            ITrait Build ();
         }
     }
 }

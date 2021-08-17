@@ -25,8 +25,8 @@ namespace ProfMon.Monster {
             public string Description { get; set; }
         }
 
-        public abstract class AbstractTraitBuilder : IBuilder<ITrait>, ITraitBuilder {
-            public abstract IBuilder<ITrait> WithID (IID id);
+        public abstract class AbstractTraitBuilder : ITraitBuilder {
+            public abstract ITraitBuilder WithID (IID id);
 
             public abstract ITraitBuilder WithDescription (string description);
             public abstract ITraitBuilder WithName (string name);

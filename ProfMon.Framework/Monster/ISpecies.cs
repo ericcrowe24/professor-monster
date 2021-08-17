@@ -22,8 +22,7 @@ namespace ProfMon.Framework.Monster {
 
         public ITrait[] Traits { get; }
 
-        public interface ISpeciesBuilder {
-            IBuilder<ISpecies> WithID (IID id);
+        public interface ISpeciesBuilder : IBuilder<ISpecies, ISpeciesBuilder> {
             ISpeciesBuilder WithName (string name);
             ISpeciesBuilder WithDescription (string description);
 
@@ -42,7 +41,6 @@ namespace ProfMon.Framework.Monster {
             ISpeciesBuilder WithGrowthRate (IGrowthRate growthRate);
             ISpeciesBuilder WithGrowthStat (Stat stat);
             ISpeciesBuilder WithTraits (ITrait[] traits);
-            ISpecies Build ();
         }
     }
 
