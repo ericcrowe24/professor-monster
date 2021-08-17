@@ -2,29 +2,32 @@
 using ProfMon.Framework.Descriptors;
 using ProfMon.Framework.Monster;
 using ProfMon.Framework.Monster.Move;
+using System.Collections.Generic;
 using static ProfMon.Framework.Monster.ISpecies;
 
 namespace ProfMon.Monster {
     public abstract class AbstractSpecies : ProfObj, ISpecies, IName, IDescription {
-        protected string _name;
-        protected string _description;
+        protected string _name { get; }
+        protected string _description { get; }
 
-        protected float _health;
-        protected float _physicalAttack;
-        protected float _physicalDefense;
-        protected float _nonphysicalAttack;
-        protected float _nonphysicalDefense;
-        protected float _speed;
+        protected float _health { get; }
+        protected float _physicalAttack { get; }
+        protected float _physicalDefense { get; }
+        protected float _nonphysicalAttack { get; }
+        protected float _nonphysicalDefense { get; }
+        protected float _speed { get; }
 
-        protected IMovePool _moves;
+        protected IMovePool _moves { get; }
 
-        protected Stat _growthStat;
-        protected IGrowthRate _growthRate;
+        protected Stat _growthStat { get; }
+        protected IGrowthRate _growthRate { get; }
 
-        protected IElement _primaryElement;
-        protected IElement _secondaryElement;
+        protected IElement _primaryElement { get; }
+        protected IElement _secondaryElement { get; }
 
-        protected ITrait[] _traits;
+        protected ITrait[] _traits { get; }
+
+        protected List<IEvolution> _evolutions { get; }
 
         public abstract string Name { get; }
         public abstract string Description { get; }
@@ -46,6 +49,8 @@ namespace ProfMon.Monster {
 
         public abstract ITrait[] Traits { get; }
 
+        public abstract List<IEvolution> Evolutions { get; }
+
         protected AbstractSpecies (Config config) : base(config.ID) {
             _name = config.Name;
             _description = config.Description;
@@ -60,6 +65,7 @@ namespace ProfMon.Monster {
             _primaryElement = config.PrimaryElement;
             _secondaryElement = config.SecondaryElement;
             _traits = config.Traits;
+            _evolutions = config.Evolutions;
         }
 
         protected class Config {
@@ -82,6 +88,8 @@ namespace ProfMon.Monster {
             public IElement SecondaryElement { get; set; }
 
             public ITrait[] Traits { get; set; }
+
+            public List<IEvolution> Evolutions { get; set; }
         }
 
         public abstract class AbstractSpeciesBuilder : ISpeciesBuilder {
@@ -105,6 +113,8 @@ namespace ProfMon.Monster {
             public abstract ISpeciesBuilder WithGrowthStat (Stat stat);
 
             public abstract ISpeciesBuilder WithTraits (ITrait[] traits);
+
+            public abstract ISpeciesBuilder WithEvolutions (List<IEvolution> evolutions);
 
             public abstract ISpecies Build ();
         }

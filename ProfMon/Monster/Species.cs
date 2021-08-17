@@ -1,6 +1,7 @@
 ﻿using ProfMon.Framework;
 using ProfMon.Framework.Monster;
 using ProfMon.Framework.Monster.Move;
+using System.Collections.Generic;
 using static ProfMon.Framework.Monster.ISpecies;
 
 namespace ProfMon.Monster {
@@ -24,6 +25,8 @@ namespace ProfMon.Monster {
         public override IElement SecondaryElement => _secondaryElement;
 
         public override ITrait[] Traits => _traits;
+
+        public override List<IEvolution> Evolutions => _evolutions;
 
         private Species () : base(null) { }
 
@@ -108,6 +111,11 @@ namespace ProfMon.Monster {
 
             public override ISpeciesBuilder WithTraits (ITrait[] traits) {
                 _config.Traits = traits;
+                return this;
+            }
+
+            public override ISpeciesBuilder WithEvolutions (List<IEvolution> evolutions) {
+                _config.Evolutions = evolutions;
                 return this;
             }
 

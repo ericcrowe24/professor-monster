@@ -1,4 +1,5 @@
 ﻿using ProfMon.Framework.Monster.Move;
+using System.Collections.Generic;
 
 namespace ProfMon.Framework.Monster {
     public interface ISpecies {
@@ -22,6 +23,8 @@ namespace ProfMon.Framework.Monster {
 
         public ITrait[] Traits { get; }
 
+        public List<IEvolution> Evolutions { get; }
+
         public interface ISpeciesBuilder : IBuilder<ISpecies, ISpeciesBuilder> {
             ISpeciesBuilder WithName (string name);
             ISpeciesBuilder WithDescription (string description);
@@ -40,7 +43,10 @@ namespace ProfMon.Framework.Monster {
 
             ISpeciesBuilder WithGrowthRate (IGrowthRate growthRate);
             ISpeciesBuilder WithGrowthStat (Stat stat);
+
             ISpeciesBuilder WithTraits (ITrait[] traits);
+
+            ISpeciesBuilder WithEvolutions (List<IEvolution> evolutions);
         }
     }
 

@@ -7,5 +7,11 @@ namespace ProfMon.Framework.World {
         int Duration { get; }
 
         Dictionary<IElement, float> ElementModifiers { get; }
+
+        public interface IWeatherBuilder : IBuilder<IWeather, IWeatherBuilder> {
+            IWeatherBuilder WithDuration (int dur);
+
+            IWeatherBuilder WithElementModifiers (Dictionary<IElement, float> mods);
+        }
     }
 }
