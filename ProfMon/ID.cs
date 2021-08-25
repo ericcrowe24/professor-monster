@@ -12,7 +12,7 @@ namespace ProfMon {
             Minor = minor;
         }
 
-        public ID (int major, int minor)
+        public ID (int major, int minor = 0)
             : this(BitConverter.GetBytes(major),
                   BitConverter.GetBytes(minor)) { }
 

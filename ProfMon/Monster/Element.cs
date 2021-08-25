@@ -8,8 +8,8 @@ namespace ProfMon.Monster {
         public override string Name => _name;
         public override string Description => _description;
 
-        public override Dictionary<IElement, int> Strengthes => _strengthes;
-        public override Dictionary<IElement, int> Weaknesses => _weaknesses;
+        public override Dictionary<IElement, float> Strengthes => _strengthes;
+        public override Dictionary<IElement, float> Weaknesses => _weaknesses;
 
         private Element () : base(null) { }
 
@@ -37,12 +37,12 @@ namespace ProfMon.Monster {
                 return this;
             }
 
-            public override IElementBuilder WithWeaknesses (Dictionary<IElement, int> weaknesses) {
+            public override IElementBuilder WithWeaknesses (Dictionary<IElement, float> weaknesses) {
                 config.Weaknesses = weaknesses;
                 return this;
             }
 
-            public override IElementBuilder WithStrengths (Dictionary<IElement, int> strengthes) {
+            public override IElementBuilder WithStrengths (Dictionary<IElement, float> strengthes) {
                 config.Strengthes = strengthes;
                 return this;
             }

@@ -9,14 +9,14 @@ namespace ProfMon.Monster {
         protected string _name { get; }
         protected string _description { get; }
 
-        protected Dictionary<IElement, int> _strengthes { get; }
-        protected Dictionary<IElement, int> _weaknesses { get; }
+        protected Dictionary<IElement, float> _strengthes { get; }
+        protected Dictionary<IElement, float> _weaknesses { get; }
 
         public abstract string Name { get; }
         public abstract string Description { get; }
 
-        public abstract Dictionary<IElement, int> Strengthes { get; }
-        public abstract Dictionary<IElement, int> Weaknesses { get; }
+        public abstract Dictionary<IElement, float> Strengthes { get; }
+        public abstract Dictionary<IElement, float> Weaknesses { get; }
 
         private AbstractElement () : base(null) { }
 
@@ -34,9 +34,9 @@ namespace ProfMon.Monster {
 
             public string Description { get; set; }
 
-            public Dictionary<IElement, int> Strengthes = new Dictionary<IElement, int>();
+            public Dictionary<IElement, float> Strengthes = new Dictionary<IElement, float>();
 
-            public Dictionary<IElement, int> Weaknesses = new Dictionary<IElement, int>();
+            public Dictionary<IElement, float> Weaknesses = new Dictionary<IElement, float>();
         }
 
         public abstract class AbstractElementBuilder : IElementBuilder {
@@ -45,8 +45,8 @@ namespace ProfMon.Monster {
             public abstract IElementBuilder WithName (string name);
             public abstract IElementBuilder WithDescription (string description);
 
-            public abstract IElementBuilder WithStrengths (Dictionary<IElement, int> strengthes);
-            public abstract IElementBuilder WithWeaknesses (Dictionary<IElement, int> weaknesses);
+            public abstract IElementBuilder WithStrengths (Dictionary<IElement, float> strengthes);
+            public abstract IElementBuilder WithWeaknesses (Dictionary<IElement, float> weaknesses);
 
             public abstract IElement Build ();
         }
